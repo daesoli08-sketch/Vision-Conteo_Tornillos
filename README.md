@@ -8,14 +8,16 @@ Esta libreria tiene como objetivos
   • Identificar regiones conectadas asociadas a cada objeto.  
   • Detectar bordes y características geométricas básicas.  
   • Estimar número total de objetos.  
-  • Entregar la solución como paquete instalable y documentado.  
+  • Entregar la solución como paquete instalable y documentado.
+  
 Integrando temas como:
 
   • Thresholding  
   • Region-based segmentation  
   • Edge detection  
   • Corner detection  
-  • Preprocesamiento  
+  • Preprocesamiento
+  
 Incorporando procesos como:
 
   • Conversión de RGB a gris  
