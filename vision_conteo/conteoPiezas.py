@@ -81,33 +81,19 @@ def Cont(img_bin):
 
     # OPENING = erosión seguida de dilatación
     # Sirve para eliminar ruido pequeño (pixeles blancos aislados)
-    opening = cv2.morphologyEx(
-        img_bin,
-        cv2.MORPH_OPEN,
-        kernel,
-        iterations=1
-    )
+    opening = cv2.morphologyEx(img_bin,cv2.MORPH_OPEN,kernel,iterations=1)
 
     # CLOSING = dilatación seguida de erosión
     # Sirve para cerrar huecos dentro de los objetos
     # (ej. imperfecciones en tornillos o tuercas)
-    closing = cv2.morphologyEx(
-        opening,
-        cv2.MORPH_CLOSE,
-        kernel,
-        iterations=2
-    )
+    closing = cv2.morphologyEx(opening,cv2.MORPH_CLOSE,kernel,iterations=2    )
 
     #Detección de contornos
 
     # Busca los contornos externos de los objetos
     # RETR_EXTERNAL: solo contornos exteriores
     # CHAIN_APPROX_SIMPLE: simplifica puntos del contorno
-    contornos, _ = cv2.findContours(
-        closing,
-        cv2.RETR_EXTERNAL,
-        cv2.CHAIN_APPROX_SIMPLE
-    )
+    contornos, _ = cv2.findContours(closing,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 
     # Lista donde se guardarán las propiedades de cada objeto
     resultados = []
@@ -166,9 +152,7 @@ def Cont(img_bin):
         #Dibuja los resultados sobre la imagen
 
         # Dibujar rectángulo alrededor del objeto
-        cv2.rectangle(
-            resultado_img,
-            (x,y),
+        cv2.rectangle(resultado_img,(x,y),
             (x+w, y+h),
             (0,255,0),  # verde
             2
@@ -184,21 +168,11 @@ def Cont(img_bin):
         )
 
         # Escribir número del objeto
-        cv2.putText(
-            resultado_img,
-            str(len(resultados)),
-            (x, y-5),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.6,
-            (255,0,0),  # azul
-            2
-        )
+        cv2.putText(resultado_img,str(len(resultados)),(x, y-5),cv2.FONT_HERSHEY_SIMPLEX,0.6,(255,0,0), 2) # azul
 
-    #Mostrar resultados
-    print("\n================================")
+#Dando propiedades.
     print(f"Objetos detectados: {len(resultados)}")
-    print("================================")
-
+    
     # Imprimir propiedades de cada objeto
     for r in resultados:
         print(f"\nObjeto {r['objeto']}")
@@ -208,8 +182,8 @@ def Cont(img_bin):
         print(f"Bounding Box: {r['bounding_box']}")
         print(f"Circularidad: {r['circularidad']}")
 
-    # Retorna la imagen con dibujos
     return resultado_img
+
 
 
 #%%CODIGO FUENTE  
@@ -246,4 +220,4 @@ if img is not None:
     plt.show()
 
 else:
-    print("Revis la ruta. No se encontro la imagen.")
+    print("Revisa la ruta. No se encontro la imagen.")
