@@ -28,3 +28,10 @@ Incorporando procesos como:
   • Detección de bordes  
   • Medición de propiedades básicas de cada objeto  
   • Conteo final
+
+    PARA LA INSTALACION DE LIBRERIA COMPLPETA
+    
+  Se recomienda descargar la libreria completa desde la pagina de Github. 
+  > Cuando se tenga el link abrir el promp de anaconda y poner el siguiente comando
+       pip install https://github.com/daesoli08-sketch/Vision-Conteo_Tornillos/archive/refs/heads/main.zip
+  
